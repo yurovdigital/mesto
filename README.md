@@ -16,7 +16,7 @@
 
 #### GH Pages
 
-[Ссылка на GH Pages]()
+[Ссылка на GH Pages](https://yurovdigital.github.io/mesto/)
 
 
 &copy; 2020. Yurov Digital.
