@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="root">
+    <!-- HEADER -->
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/header-logo.svg"
+        alt="Логотип Mesto"
+      />
+    </header>
+    <main class="main">
+      <!-- PROFILE -->
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="./images/Avatar.png"
+          alt="Фотография пожилого мужчины в красной шапке на фоне моря"
+        />
+        <div class="profile__card">
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button
+              class="profile__edit-button"
+              type="button"
+              name="Кнопка чтобы редактировать профиль"
+            ></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button
+          class="profile__add-button"
+          type="button"
+          name="Кнопка чтобы добавить фотографию"
+        ></button>
+      </section>
+      <!-- PHOTO GRID -->
+      <section class="photo-grid">
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_CatherinePalace.JPG"
+            alt="Вид на Екатерининский Дворец в городе Пушкин"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Екатерининский Дворец. г. Пушкин</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_Hermitage.JPG"
+            alt="Вид на Эрмитаж на восходе солнца"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Эрмитаж</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_Peterhof.JPG"
+            alt="Вид каскад фонтанов в г. Петергоф"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Петергоф</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_PushkinMuseum.JPG"
+            alt="Белые арки в парке у Екатерининского Дворца"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Екатерининский Дворец</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_Saint-Petersburg-1.JPG"
+            alt="Арка ведущая на Дворцовую площадь в Санкт Петербурге"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Арка на Дворцовую площадь</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+        <div class="photo-grid__card">
+          <img
+            class="photo-grid__image"
+            src="./images/photo-grid_ZingerHouse.JPG"
+            alt="Здание 'Зингер' на Невском проспекте Санкт-Петербурга"
+          />
+          <div class="photo-grid__container">
+            <p class="photo-grid__title">Здание "Зингер"</p>
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              name="Кнопка чтобы поставить лайк фотографии"
+            ></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <!-- POPUP -->
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close-button"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__profile-form" name="profile-form">
+          <input class="popup__profile-title" type="text" />
+          <input class="popup__profile-subtitle" type="text" />
+          <button class="popup__submit-button">Сохранить</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
