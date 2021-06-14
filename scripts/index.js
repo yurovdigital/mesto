@@ -6,7 +6,6 @@ const popupProfileTitle = popup.querySelector('.popup__input_type_title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
 const popupProfileSubTitle = popup.querySelector('.popup__input_type_subtitle');
 const popupCloseButton = popup.querySelector('.popup__close-button');
-const popupSubmitButton = popup.querySelector('.popup__submit-button');
 const popupForm = popup.querySelector('.popup__form');
 
 /* Функции */
