@@ -1,35 +1,33 @@
-/* Открытие POPUP */
+/* Переменные */
 const popup = document.querySelector('.popup');
 const popupEditButton = document.querySelector('.profile__edit-button');
 const profileTitle = document.querySelector('.profile__title');
-const popupProfileTitle = popup.querySelector('.popup__profile-title');
+const popupProfileTitle = popup.querySelector('.popup__input_type_title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
-const popupProfileSubTitle = popup.querySelector('.popup__profile-subtitle');
+const popupProfileSubTitle = popup.querySelector('.popup__input_type_subtitle');
+const popupCloseButton = popup.querySelector('.popup__close-button');
+const popupSubmitButton = popup.querySelector('.popup__submit-button');
+const popupForm = popup.querySelector('.popup__form');
 
+/* Функции */
 function openPopup() {
-  popup.classList.toggle('popup_opened');
   popupProfileTitle.value = profileTitle.textContent;
   popupProfileSubTitle.value = profileSubTitle.textContent;
+  popup.classList.toggle('popup_opened');
 }
-
-popupEditButton.addEventListener('click', openPopup);
-
-/* Закрытие POPUP */
-const popupCloseButton = popup.querySelector('.popup__close-button');
 
 function closePopup() {
   popup.classList.remove('popup_opened');
 }
 
-popupCloseButton.addEventListener('click', closePopup);
-
-/* Отправка формы POPUP */
-const popupSubmitButton = popup.querySelector('.popup__submit-button');
-
 function formSubmit (evt){
   evt.preventDefault();
   profileTitle.textContent = popupProfileTitle.value;
   profileSubTitle.textContent = popupProfileSubTitle.value;
+  closePopup();
 }
 
-popupSubmitButton.addEventListener('submit', formSubmit);
+/* Обработчики */
+popupEditButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
+popupForm.addEventListener('submit', formSubmit);

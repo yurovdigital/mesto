@@ -30,7 +30,7 @@
             <button
               class="profile__edit-button"
               type="button"
-              name="Кнопка чтобы редактировать профиль"
+              aria-label="Редактировать профиль"
             ></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -38,56 +38,56 @@
         <button
           class="profile__add-button"
           type="button"
-          name="Кнопка чтобы добавить фотографию"
+          aria-label="Добавить фотографию"
         ></button>
       </section>
       <!-- PHOTO GRID -->
       <section class="photo-grid">
-        <div class="photo-grid__card">
+        <article class="photo-grid__card">
           <img
             class="photo-grid__image"
             src="./images/photo-grid_CatherinePalace.JPG"
             alt="Вид на Екатерининский Дворец в городе Пушкин"
           />
           <div class="photo-grid__container">
-            <p class="photo-grid__title">Екатерининский Дворец. г. Пушкин</p>
+            <h4 class="photo-grid__title">Екатерининский Дворец. г. Пушкин</h4>
             <button
               class="photo-grid__like-button"
               type="button"
               name="Кнопка чтобы поставить лайк фотографии"
             ></button>
           </div>
-        </div>
-        <div class="photo-grid__card">
+        </article>
+        <article class="photo-grid__card">
           <img
             class="photo-grid__image"
             src="./images/photo-grid_Hermitage.JPG"
             alt="Вид на Эрмитаж на восходе солнца"
           />
           <div class="photo-grid__container">
-            <p class="photo-grid__title">Эрмитаж</p>
+            <h4 class="photo-grid__title">Эрмитаж</h4>
             <button
               class="photo-grid__like-button"
               type="button"
               name="Кнопка чтобы поставить лайк фотографии"
             ></button>
           </div>
-        </div>
-        <div class="photo-grid__card">
+        </article>
+        <article class="photo-grid__card">
           <img
             class="photo-grid__image"
             src="./images/photo-grid_Peterhof.JPG"
             alt="Вид каскад фонтанов в г. Петергоф"
           />
           <div class="photo-grid__container">
-            <p class="photo-grid__title">Петергоф</p>
+            <h4 class="photo-grid__title">Петергоф</h4>
             <button
               class="photo-grid__like-button"
               type="button"
               name="Кнопка чтобы поставить лайк фотографии"
             ></button>
           </div>
-        </div>
+        </article>
         <div class="photo-grid__card">
           <img
             class="photo-grid__image"
@@ -103,36 +103,36 @@
             ></button>
           </div>
         </div>
-        <div class="photo-grid__card">
+        <article class="photo-grid__card">
           <img
             class="photo-grid__image"
             src="./images/photo-grid_Saint-Petersburg-1.JPG"
             alt="Арка ведущая на Дворцовую площадь в Санкт Петербурге"
           />
           <div class="photo-grid__container">
-            <p class="photo-grid__title">Арка на Дворцовую площадь</p>
+            <h4 class="photo-grid__title">Арка на Дворцовую площадь</h4>
             <button
               class="photo-grid__like-button"
               type="button"
               name="Кнопка чтобы поставить лайк фотографии"
             ></button>
           </div>
-        </div>
-        <div class="photo-grid__card">
+        </article>
+        <article class="photo-grid__card">
           <img
             class="photo-grid__image"
             src="./images/photo-grid_ZingerHouse.JPG"
             alt="Здание 'Зингер' на Невском проспекте Санкт-Петербурга"
           />
           <div class="photo-grid__container">
-            <p class="photo-grid__title">Здание "Зингер"</p>
+            <h4 class="photo-grid__title">Здание "Зингер"</h4>
             <button
               class="photo-grid__like-button"
               type="button"
               name="Кнопка чтобы поставить лайк фотографии"
             ></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
@@ -140,17 +140,17 @@
     </footer>
 
     <!-- POPUP -->
-    <section class="popup">
+    <article class="popup">
       <div class="popup__container">
-        <button class="popup__close-button"></button>
+        <button type="button" class="popup__close-button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__profile-form" name="profile-form">
-          <input class="popup__profile-title" type="text" />
-          <input class="popup__profile-subtitle" type="text" />
-          <button class="popup__submit-button">Сохранить</button>
+        <form class="popup__form" name="profileform">
+          <input class="popup__input popup__input_type_title" type="text" name="profiletitle" />
+          <input class="popup__input popup__input_type_subtitle" type="text" name="profilesubtitle"/>
+          <button class="popup__submit-button" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </article>
 
     <!-- SCRIPTS -->
     <script src="./scripts/index.js"></script>

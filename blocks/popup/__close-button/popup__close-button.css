@@ -7,7 +7,7 @@
   border: none;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: auto;
   background-color: transparent;
   cursor: pointer;
   transition: opacity .2s ease-in-out;
@@ -25,7 +25,8 @@
   .popup__close-button {
     width: 40px;
     height: 40px;
-    right: -32px;
-    top: -32px;
+    right: -40px;
+    top: -40px;
+    background-size: 50px 50px;
   }
 }
