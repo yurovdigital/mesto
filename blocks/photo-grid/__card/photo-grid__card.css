@@ -5,4 +5,5 @@
   box-sizing: border-box;
   background-color: #fff;
   margin: 0 auto;
+  position: relative;
 }
