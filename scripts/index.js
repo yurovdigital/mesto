@@ -84,20 +84,15 @@ function addPhotoSubmit(evt) {
 }
 
 /* Popup - фото во весь экран */
-function openImagePopup() {
-  imagePopup.classList.toggle("popup_opened");
-
-}
-
 function imagePopupOpen (evt) {
-  openImagePopup();
+  openPopup(imagePopup);
   imageFullscreen.src = evt.target.src;
   imageFullscreen.alt = evt.target.alt;
   imageText.textContent = evt.target.alt;
 }
 
 function closeImagePopup() {
-  imagePopup.classList.remove("popup_opened");
+  closePopup(imagePopup);
 }
 
 /* Добавление изображения на страницу */
