@@ -80,19 +80,36 @@
           aria-label="Закрыть окно"
         ></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="profileform">
-          <input
-            class="popup__input popup__input_type_title"
-            type="text"
-            name="profiletitle"
-            placeholder="Имя профиля"
+        <form class="popup__form" name="profileform" novalidate>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_title"
+              type="text"
+              name="profiletitle"
+              id="profiletitle-input"
+              placeholder="Имя профиля"
+              minlength="2"
+              maxlength="40"
+              required
           />
-          <input
-            class="popup__input popup__input_type_subtitle"
-            type="text"
-            name="profilesubtitle"
-            placeholder="Описание профиля"
-          />
+           <span class="popup__error" id="profiletitle-input-error"></span>
+          </section>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_subtitle"
+              type="text"
+              name="profilesubtitle"
+              id="pofilesubtitle-input"
+              placeholder="Описание профиля"
+              minlength="2"
+              maxlength="200"
+              required
+              />
+            <span
+              class="popup__error"
+              id="pofilesubtitle-input-error"
+            ></span>
+          </section>
           <button class="popup__submit-button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -107,19 +124,31 @@
           aria-label="Закрыть окно"
         ></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="addphotoform">
+        <form class="popup__form" name="addphotoform" novalidate>
+          <section class="popup__section">
           <input
             class="popup__input popup__input_type_photo-name"
             type="text"
             name="phototitle"
+            id="phototitle-input"
             placeholder="Название изображения"
+            minlength="2"
+            maxlength="30"
+            required
           />
+          <span class="popup__error" id="phototitle-input-error"></span>
+        </section>
+        <section class="popup__section">
           <input
             class="popup__input popup__input_type_photo-url"
             type="url"
             name="photourl"
+            id="photourl-input"
             placeholder="Ссылка на изображение"
+            required
           />
+          <span class="popup__error" id="photourl-input-error"></span>
+        </section>
           <button class="popup__submit-button" type="submit">Создать</button>
         </form>
       </div>
@@ -143,6 +172,8 @@
     </section>
 
     <!-- SCRIPTS -->
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
+
   </body>
 </html>
