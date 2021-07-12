@@ -3,9 +3,11 @@
   border: 1px solid #000;
   background-color: transparent;
   color: #000;
-  cursor: default;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.popup__submit-button_disabled:hover {
-  opacity: 0.2;
-}
+

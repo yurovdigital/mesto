@@ -1,25 +1,25 @@
 /* Показывает ошибки в input */
-function showInputError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage, inputErrorClass, errorClass) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_type_error");
+  inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__error_visible");
+  errorElement.classList.add(errorClass);
 };
 
 /* Скрывает ошибки в input */
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, inputErrorClass, errorClass) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove("popup__input_type_error");
-  errorElement.classList.remove("popup__error_visible");
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 }
 
 /* Проверка валидации input */
-function checkInputValidity(formElement, inputElement) {
+function checkInputValidity(formElement, inputElement, inputErrorClass, errorClass) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
 }
 
@@ -30,23 +30,23 @@ function hasInvalidInput(inputList) {
 }
 
 /* Активация кнопки */
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
 
     buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit-button_disabled");
+    buttonElement.classList.add(inactiveButtonClass);
 
   }
   else {
 
     buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("popup__submit-button_disabled");
+    buttonElement.classList.remove(inactiveButtonClass);
 
   }
 }
 
 /* Слушатель на input */
-function setEventListeners(formElement, inputSelector, submitButtonSelector) {
+function setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass) {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
@@ -55,21 +55,21 @@ function setEventListeners(formElement, inputSelector, submitButtonSelector) {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
 
-      toggleButtonState(inputList, buttonElement);
-      checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+      checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
 
     })
   })
 }
 
 /* ФУНКЦИЯ ВАЛИДАЦИИ */
-function enableValidation({formSelector, ...rest}) {
+function enableValidation({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     })
-    setEventListeners(formElement, rest.inputSelector, rest.submitButtonSelector);
+    setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
   })
 }
 

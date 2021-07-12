@@ -17,6 +17,18 @@
   padding: 0;
 }
 
+.popup__submit-button:disabled {
+  opacity: 0.2;
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .popup__submit-button:hover {
   opacity: 0.8;
 }
