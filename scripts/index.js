@@ -91,8 +91,12 @@ function formSubmit(evt) {
   closePopup(popupProfileEdit);
 }
 
+
 /* Popup - добавление фото */
 function openAddPhotoPopup() {
+  const addButton = popupAddPhoto.querySelector(".popup__submit-button");
+  addButton.classList.add("popup__submit-button_disabled");
+  addButton.setAttribute("disabled", true);
   openPopup(popupAddPhoto);
 }
 
@@ -115,16 +119,17 @@ function addPhotoSubmit(evt) {
 }
 
 /* Popup - фото во весь экран */
-function imagePopupOpen(evt) {
+function openImagePopup(link, name) {
   openPopup(imagePopup);
-  imageFullscreen.src = evt.target.src;
-  imageFullscreen.alt = evt.target.alt;
-  imageText.textContent = evt.target.alt;
+  imageFullscreen.src = link;
+  imageFullscreen.alt = name;
+  imageText.textContent = name;
 }
 
 function closeImagePopup() {
   closePopup(imagePopup);
 }
+
 
 /* Добавление изображения на страницу */
 function likePhoto(evt) {
@@ -147,7 +152,7 @@ function renderPhotoItem(item) {
 
   likeButton.addEventListener("click", likePhoto);
   deleteButton.addEventListener("click", photoDelete);
-  photoImage.addEventListener("click", imagePopupOpen);
+  photoImage.addEventListener("click", () => openImagePopup(item.link, item.name));
 
   return photoItem;
 }
