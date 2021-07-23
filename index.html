@@ -44,23 +44,27 @@
       <!-- PHOTO GRID -->
       <section class="photo-grid">
         <template class="photo-grid__template">
-        <article class="photo-grid__card">
-          <button class="photo-grid__delete-button" type="button" aria-label="Удалить изображение"></button>
-          <img
-            class="photo-grid__image"
-            src=""
-            alt=""
-          />
-          <div class="photo-grid__container">
-            <h2 class="photo-grid__title"></h2>
+          <article class="photo-grid__card">
             <button
-              class="photo-grid__like-button"
+              class="photo-grid__delete-button"
               type="button"
-              aria-label="Поставить лайк фотографии"
+              aria-label="Удалить изображение"
             ></button>
-          </div>
-        </article>
-      </template>
+            <img
+              class="photo-grid__image"
+              src="./images/photo-grid_CatherinePalace.jpg"
+              alt=""
+            />
+            <div class="photo-grid__container">
+              <h2 class="photo-grid__title"></h2>
+              <button
+                class="photo-grid__like-button"
+                type="button"
+                aria-label="Поставить лайк фотографии"
+              ></button>
+            </div>
+          </article>
+        </template>
       </section>
     </main>
     <footer class="footer">
@@ -70,11 +74,42 @@
     <!-- POPUP - EDIT PROFILE -->
     <article class="popup popup_profile-edit">
       <div class="popup__container">
-        <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Закрыть окно"
+        ></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="profileform">
-          <input class="popup__input popup__input_type_title" type="text" name="profiletitle" />
-          <input class="popup__input popup__input_type_subtitle" type="text" name="profilesubtitle"/>
+        <form class="popup__form" name="profileform" novalidate>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_title"
+              type="text"
+              name="profiletitle"
+              id="profiletitle-input"
+              placeholder="Имя профиля"
+              minlength="2"
+              maxlength="40"
+              required
+          />
+           <span class="popup__error" id="profiletitle-input-error"></span>
+          </section>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_subtitle"
+              type="text"
+              name="profilesubtitle"
+              id="pofilesubtitle-input"
+              placeholder="Описание профиля"
+              minlength="2"
+              maxlength="200"
+              required
+              />
+            <span
+              class="popup__error"
+              id="pofilesubtitle-input-error"
+            ></span>
+          </section>
           <button class="popup__submit-button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -83,27 +118,62 @@
     <!-- POPUP - ADD PHOTO  -->
     <article class="popup popup_add-photo">
       <div class="popup__container">
-        <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Закрыть окно"
+        ></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="addphotoform">
-          <input class="popup__input popup__input_type_photo-name" type="text" name="phototitle" placeholder="Название изображения" />
-          <input class="popup__input popup__input_type_photo-url" type="text" name="photourl" placeholder="Ссылка на изображение"/>
+        <form class="popup__form" name="addphotoform" novalidate>
+          <section class="popup__section">
+          <input
+            class="popup__input popup__input_type_photo-name"
+            type="text"
+            name="phototitle"
+            id="phototitle-input"
+            placeholder="Название изображения"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="popup__error" id="phototitle-input-error"></span>
+        </section>
+        <section class="popup__section">
+          <input
+            class="popup__input popup__input_type_photo-url"
+            type="url"
+            name="photourl"
+            id="photourl-input"
+            placeholder="Ссылка на изображение"
+            required
+          />
+          <span class="popup__error" id="photourl-input-error"></span>
+        </section>
           <button class="popup__submit-button" type="submit">Создать</button>
         </form>
       </div>
     </article>
 
     <!-- POPUP - PHOTO GRID IMAGE FULLSCREEN -->
-      <section class="popup popup_image-fullscreen">
-        <div class="popup__image-container">
-          <button type="button" class="popup__close-button" aria-label="Закрыть окно"></button>
-          <img src="" alt="" class="popup__image">
+    <section class="popup popup_image-fullscreen">
+      <div class="popup__image-container">
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Закрыть окно"
+        ></button>
+        <img
+          src="./images/photo-grid_CatherinePalace.jpg"
+          alt="Описание изображения"
+          class="popup__image"
+        />
         <p class="popup__image-fullscreen-text"></p>
       </div>
-      </section>
-
+    </section>
 
     <!-- SCRIPTS -->
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
+
   </body>
 </html>
