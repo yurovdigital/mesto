@@ -7,9 +7,12 @@ export default class FormValidator {
     this._inactiveButtonClass = validationConfig.inactiveButtonClass;
     this._inputErrorClass = validationConfig.inputErrorClass;
     this._errorClass = validationConfig.errorClass;
-    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-
+    this._buttonElement = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
   }
 
   /* Показывает ошибки в input */
@@ -48,19 +51,15 @@ export default class FormValidator {
   }
 
   /* Активация кнопки */
-  _toggleButtonState()  {
-      if (this._hasInvalidInput(this._inputList)) {
-
-        this._buttonElement.classList.add(this._inactiveButtonClass);
-        this._buttonElement.setAttribute('disabled', true);
-
-      } else {
-
-        this._buttonElement.classList.remove(this._inactiveButtonClass);
-        this._buttonElement.removeAttribute('disabled');
-
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.setAttribute("disabled", true);
+    } else {
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.removeAttribute("disabled");
     }
-  };
+  }
 
   /* Слушатель на input */
   _setEventListeners() {
@@ -71,15 +70,13 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-  };
+  }
 
-  /* Включение валидации */
+  /* включение валидации */
   enableValidation() {
-      this._formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners();
-    };
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    this._setEventListeners();
+  }
 }
-
-
