@@ -1,5 +1,8 @@
+/* ИМПОРТЫ */
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 /* ПЕРЕМЕННЫЕ */
-const popup = document.querySelector(".popup");
 /* Popup - редактор профиля */
 const popupProfileEdit = document.querySelector(".popup_profile-edit");
 const popupEditButton = document.querySelector(".profile__edit-button");
@@ -17,10 +20,6 @@ const popupProfileEditCloseButton = popupProfileEdit.querySelector(
 const popupProfileForm = popupProfileEdit.querySelector(".popup__form");
 /* Карточки с изображениями */
 const photoGrid = document.querySelector(".photo-grid");
-const photoGridTemplate = photoGrid.querySelector(
-  ".photo-grid__template"
-).content;
-const deleteButton = photoGrid.querySelector(".photo-grid__delete-button");
 /* Popup - добавление фото */
 const addButton = document.querySelector(".profile__add-button");
 const popupAddPhoto = document.querySelector(".popup_add-photo");
@@ -33,7 +32,6 @@ const addPhotoTitle = popupAddPhoto.querySelector(
 );
 const addPhotoUrl = popupAddPhoto.querySelector(".popup__input_type_photo-url");
 /* Popup - фото во весь экран */
-const photoGridItem = photoGrid.querySelector(".photo-grid__image");
 const imagePopup = document.querySelector(".popup_image-fullscreen");
 const imageFullscreen = imagePopup.querySelector(".popup__image");
 const imageText = imagePopup.querySelector(".popup__image-fullscreen-text");
@@ -73,6 +71,16 @@ function closePopupOverlay(evt) {
   }
 }
 
+/* Popup - закрытие добавление фото */
+function closeAddPhotoPopup() {
+  closePopup(popupAddPhoto);
+}
+
+/* Popup - закрытие изображения во весь экран */
+function closeImagePopup() {
+  closePopup(imagePopup);
+}
+
 /* Popup - редактор профиля */
 function closeProfileEditPopup() {
   closePopup(popupProfileEdit);
@@ -89,6 +97,7 @@ function formSubmit(evt) {
   profileTitle.textContent = popupProfileTitle.value;
   profileSubTitle.textContent = popupProfileSubTitle.value;
   closePopup(popupProfileEdit);
+
 }
 
 
@@ -100,71 +109,40 @@ function openAddPhotoPopup() {
   openPopup(popupAddPhoto);
 }
 
-function closeAddPhotoPopup() {
-  closePopup(popupAddPhoto);
-}
 
 function addPhotoSubmit(evt) {
   evt.preventDefault();
-  const addTitle = addPhotoTitle.value;
-  const addUrl = addPhotoUrl.value;
   const addPhoto = {
-    name: addTitle,
-    link: addUrl,
+    name: addPhotoTitle.value,
+    link: addPhotoUrl.value,
   };
-
-  prependPhotoItem(addPhoto);
-  clearForm(addPhotoForm);
+  renderPhotoItem(addPhoto, ".photo-grid__template");
   closePopup(popupAddPhoto);
+  clearForm(addPhotoForm);
 }
 
-/* Popup - фото во весь экран */
-function openImagePopup(link, name) {
-  openPopup(imagePopup);
-  imageFullscreen.src = link;
-  imageFullscreen.alt = name;
-  imageText.textContent = name;
+function renderPhotoItem(item, cardSelector) {
+  const newCard = new Card(item, cardSelector);
+  const cardElement = newCard.createCard();
+  photoGrid.prepend(cardElement);
+  return cardElement;
 }
 
-function closeImagePopup() {
-  closePopup(imagePopup);
-}
+/* Включение валидации */
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+};
 
+const addPhotoFormValidation = new FormValidator (validationConfig, popupAddPhoto);
+addPhotoFormValidation.enableValidation();
 
-/* Добавление изображения на страницу */
-function likePhoto(evt) {
-  evt.target.classList.toggle("photo-grid__like-button_active");
-}
-
-function photoDelete(evt) {
-  evt.target.closest(".photo-grid__card").remove();
-}
-
-function renderPhotoItem(item) {
-  const photoItem = photoGridTemplate.cloneNode(true);
-  const photoImage = photoItem.querySelector(".photo-grid__image");
-  const photoTitle = photoItem.querySelector(".photo-grid__title");
-  const likeButton = photoItem.querySelector(".photo-grid__like-button");
-  const deleteButton = photoItem.querySelector(".photo-grid__delete-button");
-  photoImage.src = item.link;
-  photoImage.alt = item.name;
-  photoTitle.textContent = item.name;
-
-  likeButton.addEventListener("click", likePhoto);
-  deleteButton.addEventListener("click", photoDelete);
-  photoImage.addEventListener("click", () => openImagePopup(item.link, item.name));
-
-  return photoItem;
-}
-
-function prependPhotoItem(item) {
-  const addNewItem = renderPhotoItem(item);
-  photoGrid.prepend(addNewItem);
-}
-
-function renderPhotoGrid(items) {
-  items.forEach(prependPhotoItem);
-}
+const editProfileFormValidation = new FormValidator (validationConfig, popupProfileEdit);
+editProfileFormValidation.enableValidation();
 
 /* ОБРАБОТЧИКИ */
 /* Popup - редактор профиля */
@@ -177,6 +155,7 @@ popupAddPhotoCloseButton.addEventListener("click", closeAddPhotoPopup);
 addPhotoForm.addEventListener("submit", addPhotoSubmit);
 /* Popup - изображение во весь экран */
 imagePopupCloseButton.addEventListener("click", closeImagePopup);
+
 
 /*  МАССИВ С ФОТО */
 const items = [
@@ -207,4 +186,16 @@ const items = [
 ];
 
 /* ЗАГРУЗКА ИЗОБРАЖЕНИЙ НА СТРАНИЦУ*/
+function renderPhotoGrid() {
+  items.forEach((item) => {
+    photoGrid.prepend(renderPhotoItem(item, ".photo-grid__template"));
+  });
+
+};
 renderPhotoGrid(items);
+
+/* ЭКСПОРТЫ */
+export {openPopup, imagePopup, imageFullscreen, imageText};
+
+
+
