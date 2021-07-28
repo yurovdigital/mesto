@@ -72,7 +72,7 @@ export default class FormValidator {
     });
   }
 
-  /* включение валидации */
+  /* Включение валидации */
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
