@@ -44,6 +44,8 @@ export default class FormValidator {
     }
   }
 
+
+
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
@@ -79,4 +81,14 @@ export default class FormValidator {
     });
     this._setEventListeners();
   }
+
+  /* Очистка полей формы */
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)
+    });
+  }
 }
+

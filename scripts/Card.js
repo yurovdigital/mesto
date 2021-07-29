@@ -1,12 +1,10 @@
-/* ИМПОРТЫ */
-import {openPopup, imagePopup, imageFullscreen, imageText} from "./index.js";
-
 /* СОЗДАНИЕ КЛАССА */
 export default class Card {
-	constructor(item, cardSelector) {
+	constructor(item, cardSelector, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
 	}
 
   _getTemplate() {
@@ -29,14 +27,6 @@ export default class Card {
     evt.target.closest(".photo-grid__card").remove();
   }
 
-  /* Открытие popup */
-  _openImagePopup() {
-    openPopup(imagePopup);
-    imageFullscreen.src = this._link;
-    imageFullscreen.alt = this._name;
-    imageText.textContent = this._name;
-  }
-
   /* Слушатели событий */
   _setEventListeners() {
     this._cardElement.querySelector(".photo-grid__like-button").addEventListener('click', (evt) => {
@@ -46,7 +36,7 @@ export default class Card {
 			this._deletePhoto(evt);
 		});
     this._cardElement.querySelector(".photo-grid__image").addEventListener('click', () => {
-      this._openImagePopup();
+      this._handleCardClick(this._name, this._link);
     });
   }
 

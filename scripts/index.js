@@ -66,14 +66,21 @@ function closePopupEsc(evt) {
 /* Закрытие popup по клику на оверлей */
 function closePopupOverlay(evt) {
   if (evt.target === evt.currentTarget) {
-    const popupOpen = document.querySelector(".popup_opened");
-    closePopup(popupOpen);
+    closePopup(evt.currentTarget);
   }
 }
 
 /* Popup - закрытие добавление фото */
 function closeAddPhotoPopup() {
   closePopup(popupAddPhoto);
+}
+
+/* Popup - открытие изображения во весь экран */
+function handleCardClick(name, link) {
+  imageFullscreen.src = link;
+  imageFullscreen.alt = name;
+  imageText.textContent = name;
+  openPopup(imagePopup);
 }
 
 /* Popup - закрытие изображения во весь экран */
@@ -87,6 +94,7 @@ function closeProfileEditPopup() {
 }
 
 function openProfileEditPopup() {
+  editProfileFormValidation.resetValidation();
   popupProfileTitle.value = profileTitle.textContent;
   popupProfileSubTitle.value = profileSubTitle.textContent;
   openPopup(popupProfileEdit);
@@ -100,15 +108,12 @@ function formSubmit(evt) {
 
 }
 
-
 /* Popup - добавление фото */
 function openAddPhotoPopup() {
-  const addButton = popupAddPhoto.querySelector(".popup__submit-button");
-  addButton.classList.add("popup__submit-button_disabled");
-  addButton.setAttribute("disabled", true);
+  addPhotoFormValidation.resetValidation();
+  clearForm(addPhotoForm);
   openPopup(popupAddPhoto);
 }
-
 
 function addPhotoSubmit(evt) {
   evt.preventDefault();
@@ -116,15 +121,15 @@ function addPhotoSubmit(evt) {
     name: addPhotoTitle.value,
     link: addPhotoUrl.value,
   };
-  renderPhotoItem(addPhoto, ".photo-grid__template");
+  photoGrid.prepend(createCard(addPhoto, ".photo-grid__template"));
   closePopup(popupAddPhoto);
   clearForm(addPhotoForm);
 }
 
-function renderPhotoItem(item, cardSelector) {
-  const newCard = new Card(item, cardSelector);
+/* Создание новой карточки */
+function createCard(item, cardSelector) {
+  const newCard = new Card(item, cardSelector, handleCardClick);
   const cardElement = newCard.createCard();
-  photoGrid.prepend(cardElement);
   return cardElement;
 }
 
@@ -188,14 +193,8 @@ const items = [
 /* ЗАГРУЗКА ИЗОБРАЖЕНИЙ НА СТРАНИЦУ*/
 function renderPhotoGrid() {
   items.forEach((item) => {
-    photoGrid.prepend(renderPhotoItem(item, ".photo-grid__template"));
+    photoGrid.prepend(createCard(item, ".photo-grid__template"));
   });
 
 };
 renderPhotoGrid(items);
-
-/* ЭКСПОРТЫ */
-export {openPopup, imagePopup, imageFullscreen, imageText};
-
-
-
