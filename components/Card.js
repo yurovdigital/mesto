@@ -1,17 +1,16 @@
 /* СОЗДАНИЕ КЛАССА */
 export default class Card {
-	constructor(item, cardSelector, handleCardClick) {
+  constructor(item, cardSelector, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-	}
+  }
 
   _getTemplate() {
-  	const cardElement = document
+    const cardElement = document
       .querySelector(this._cardSelector)
-      .content
-      .querySelector(".photo-grid__card")
+      .content.querySelector(".photo-grid__card")
       .cloneNode(true);
 
     return cardElement;
@@ -29,19 +28,25 @@ export default class Card {
 
   /* Слушатели событий */
   _setEventListeners() {
-    this._cardElement.querySelector(".photo-grid__like-button").addEventListener('click', (evt) => {
-      this._likePhoto(evt);
-    });
-    this._cardElement.querySelector(".photo-grid__delete-button").addEventListener('click', (evt) => {
-			this._deletePhoto(evt);
-		});
-    this._cardElement.querySelector(".photo-grid__image").addEventListener('click', () => {
-      this._handleCardClick(this._name, this._link);
-    });
+    this._cardElement
+      .querySelector(".photo-grid__like-button")
+      .addEventListener("click", (evt) => {
+        this._likePhoto(evt);
+      });
+    this._cardElement
+      .querySelector(".photo-grid__delete-button")
+      .addEventListener("click", (evt) => {
+        this._deletePhoto(evt);
+      });
+    this._cardElement
+      .querySelector(".photo-grid__image")
+      .addEventListener("click", () => {
+        this._handleCardClick(this._name, this._link);
+      });
   }
 
   /* Создание карточки */
-  createCard() {
+  generateCard() {
     this._cardElement = this._getTemplate();
     const photoImage = this._cardElement.querySelector(".photo-grid__image");
     const photoTitle = this._cardElement.querySelector(".photo-grid__title");
