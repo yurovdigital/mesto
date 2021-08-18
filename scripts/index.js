@@ -6,31 +6,23 @@ import {
   profileSubTitle,
   popupProfileTitle,
   popupProfileSubTitle,
-  popupProfileEditCloseButton,
-  popupProfileForm,
   photoGrid,
   addButton,
   popupAddPhoto,
-  addPhotoForm,
-  popupAddPhotoCloseButton,
   addPhotoTitle,
   addPhotoUrl,
-  imagePopup,
-  imageFullscreen,
-  imageText,
-  imagePopupCloseButton
+  imagePopup
 } from "../utils/constants.js";
-
 import { defaultPhotos } from "../utils/defaultPhotos.js";
+
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
-/* Включение валидации */
+/* Конфиг валидации */
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -40,9 +32,11 @@ const validationConfig = {
   errorClass: "popup__error_visible"
 };
 
+/* Валидация popup добавления карточки */
 const addPhotoFormValidation = new FormValidator (validationConfig, popupAddPhoto);
 addPhotoFormValidation.enableValidation();
 
+/* Валидация popup редактирования профиля */
 const editProfileFormValidation = new FormValidator (validationConfig, popupProfileEdit);
 editProfileFormValidation.enableValidation();
 
@@ -70,7 +64,6 @@ popupEditButton.addEventListener("click", () => {
 })
 
 
-
 /* Popup - изображение во весь экран */
 const popupImageFullscreen = new PopupWithImage(imagePopup);
 popupImageFullscreen.setEventListeners();
@@ -90,11 +83,12 @@ const newPhoto = new PopupWithForm(popupAddPhoto, () => {
   defaultCardList.setItem(newCard);
 });
 
+newPhoto.setEventListeners();
+
 addButton.addEventListener("click", () => {
   newPhoto.open();
   addPhotoFormValidation.resetValidation();
 })
-newPhoto.setEventListeners();
 
 
 /* ЗАГРУЗКА ИЗОБРАЖЕНИЙ НА СТРАНИЦУ*/

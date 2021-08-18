@@ -9,10 +9,12 @@ export default class Section {
     this._container.innerHTML = '';
   }
 
+  /* Добавление одной карточки */
   setItem(element) {
     this._container.prepend(element);
   }
 
+  /* Отрисовка карточек */
   renderItems() {
     this._clear();
 
