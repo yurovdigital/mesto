@@ -1,4 +1,5 @@
 /* ИМПОРТЫ */
+import "../pages/index.css";
 import {
   popupProfileEdit,
   popupEditButton,

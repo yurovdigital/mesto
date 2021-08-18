@@ -1,10 +1,3 @@
-// import CatherinePalace from "../images/photo-grid_CatherinePalace.jpg";
-// import Hermitage from "../images/photo-grid_Hermitage.jpg";
-// import Peterhof from "../images/photo-grid_Peterhof.jpg";
-// import PushkinMuseum from "../images/photo-grid_PushkinMuseum.jpg";
-// import SaintPetersburg from "../images/photo-grid_Saint-Petersburg-1.jpg";
-// import ZingerHouse from "../images/photo-grid_ZingerHouse.jpg";
-
 export const defaultPhotos = [
   {
       name: "Екатерининский Дворец",

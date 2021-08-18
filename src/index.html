@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="root">
@@ -12,7 +11,7 @@
     <header class="header">
       <img
         class="header__logo"
-        src="./images/header-logo.svg"
+        src="<%=require('./images/header-logo.svg')%>"
         alt="Логотип Mesto"
       />
     </header>
@@ -21,7 +20,7 @@
       <section class="profile">
         <img
           class="profile__avatar"
-          src="./images/Avatar.png"
+          src="<%=require('./images/Avatar.png')%>"
           alt="Аватар пользователя"
         />
         <div class="profile__card">
@@ -104,7 +103,7 @@
         ></button>
         <img
           class="photo-grid__image"
-          src="./images/photo-grid_CatherinePalace.jpg"
+          src="<%=require('./images/photo-grid_Hermitage.jpg')%>"
           alt=""
         />
         <div class="photo-grid__container">
@@ -174,8 +173,8 @@
       </div>
     </section>
 
-    <!-- SCRIPTS -->
-    <script type="module" src="./scripts/index.js"></script>
+
+
 
   </body>
 </html>
