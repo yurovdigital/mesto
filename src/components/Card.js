@@ -1,8 +1,8 @@
 /* СОЗДАНИЕ КЛАССА */
 export default class Card {
-  constructor(item, cardSelector, handleCardClick) {
-    this._name = item.name;
-    this._link = item.link;
+  constructor(items, cardSelector, handleCardClick) {
+    this._name = items.name;
+    this._link = items.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -48,11 +48,13 @@ export default class Card {
   /* Создание карточки */
   generateCard() {
     this._cardElement = this._getTemplate();
-    const photoImage = this._cardElement.querySelector(".photo-grid__image");
-    const photoTitle = this._cardElement.querySelector(".photo-grid__title");
-    photoImage.src = this._link;
-    photoTitle.alt = this._name;
-    photoTitle.textContent = this._name;
+    const cardImage = this._cardElement.querySelector(".photo-grid__image");
+    const cardTitle = this._cardElement.querySelector(".photo-grid__title");
+
+
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
+    cardTitle.textContent = this._name;
 
     this._setEventListeners();
 

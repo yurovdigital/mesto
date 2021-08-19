@@ -1,7 +1,9 @@
 export default class UserInfo {
-  constructor(username, description) {
-    this._name = username;
-    this._description = description;
+  constructor(profileTitle, profileSubtitle) {
+    this._name = profileTitle;
+    this._description = profileSubtitle;
+    this._profileName = document.querySelector(".profile__title");
+    this._profileDescription = document.querySelector(".profile__subtitle");
   }
 
   /* Получение информации о пользователе */
@@ -11,9 +13,14 @@ export default class UserInfo {
     this._profileInfo.description = this._description.textContent;
     return this._profileInfo;
   }
+
   /* Изменение информации о пользователе */
-  setUserInfo(username, description) {
-    this._name.textContent = username;
-    this._description.textContent = description;
+  setUserInfo({ profiletitle, profilesubtitle }) {
+    if (profiletitle) {
+      this._name.textContent = profiletitle;
+    }
+    if (profilesubtitle) {
+      this._description.textContent = profilesubtitle;
+    }
   }
 }
