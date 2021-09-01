@@ -44,9 +44,7 @@
         ></button>
       </section>
       <!-- PHOTO GRID -->
-      <section class="photo-grid">
-
-      </section>
+      <section class="photo-grid"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -72,8 +70,8 @@
               minlength="2"
               maxlength="40"
               required
-          />
-           <span class="popup__error" id="profiletitle-input-error"></span>
+            />
+            <span class="popup__error" id="profiletitle-input-error"></span>
           </section>
           <section class="popup__section">
             <input
@@ -85,11 +83,8 @@
               minlength="2"
               maxlength="200"
               required
-              />
-            <span
-              class="popup__error"
-              id="pofilesubtitle-input-error"
-            ></span>
+            />
+            <span class="popup__error" id="pofilesubtitle-input-error"></span>
           </section>
           <button class="popup__submit-button" type="submit">Сохранить</button>
         </form>
@@ -134,29 +129,29 @@
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="addphotoform" novalidate>
           <section class="popup__section">
-          <input
-            class="popup__input popup__input_type_photo-name"
-            type="text"
-            name="name"
-            id="phototitle-input"
-            placeholder="Название изображения"
-            minlength="2"
-            maxlength="30"
-            required
-          />
-          <span class="popup__error" id="phototitle-input-error"></span>
-        </section>
-        <section class="popup__section">
-          <input
-            class="popup__input popup__input_type_photo-url"
-            type="url"
-            name="link"
-            id="photourl-input"
-            placeholder="Ссылка на изображение"
-            required
-          />
-          <span class="popup__error" id="photourl-input-error"></span>
-        </section>
+            <input
+              class="popup__input popup__input_type_photo-name"
+              type="text"
+              name="name"
+              id="phototitle-input"
+              placeholder="Название изображения"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="popup__error" id="phototitle-input-error"></span>
+          </section>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_photo-url"
+              type="url"
+              name="link"
+              id="photourl-input"
+              placeholder="Ссылка на изображение"
+              required
+            />
+            <span class="popup__error" id="photourl-input-error"></span>
+          </section>
           <button class="popup__submit-button" type="submit">Создать</button>
         </form>
       </div>
@@ -188,12 +183,17 @@
           aria-label="Закрыть окно"
         ></button>
         <h3 class="popup__title">Вы уверены?</h3>
-          <button class="popup__submit-button popup__submit-button_confirm-delete" type="submit">Да</button>
+        <button
+          class="popup__submit-button popup__submit-button_confirm-delete"
+          type="submit"
+        >
+          Да
+        </button>
       </div>
     </article>
 
-     <!-- POPUP - EDIT AVATAR  -->
-     <article class="popup popup_edit-avatar">
+    <!-- POPUP - EDIT AVATAR  -->
+    <article class="popup popup_edit-avatar">
       <div class="popup__container">
         <button
           type="button"
@@ -202,21 +202,20 @@
         ></button>
         <h3 class="popup__title">Обновить аватар</h3>
         <form class="popup__form" name="editavatarform" novalidate>
-        <section class="popup__section">
-          <input
-            class="popup__input popup__input_type_avatar-url"
-            type="url"
-            name="avatar"
-            id="avatar-input"
-            placeholder="Ссылка на изображение"
-            required
-          />
-          <span class="popup__error" id="avatar-input-error"></span>
-        </section>
+          <section class="popup__section">
+            <input
+              class="popup__input popup__input_type_avatar-url"
+              type="url"
+              name="avatar"
+              id="avatar-input"
+              placeholder="Ссылка на изображение"
+              required
+            />
+            <span class="popup__error" id="avatar-input-error"></span>
+          </section>
           <button class="popup__submit-button" type="submit">Сохранить</button>
         </form>
       </div>
     </article>
-
   </body>
 </html>
