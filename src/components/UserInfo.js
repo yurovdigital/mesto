@@ -1,7 +1,9 @@
 export default class UserInfo {
-  constructor(profileTitle, profileSubtitle) {
+  constructor(profileTitle, profileSubtitle, profileAvatar) {
     this._name = profileTitle;
     this._description = profileSubtitle;
+    this._avatar = profileAvatar;
+
     this._profileName = document.querySelector(".profile__title");
     this._profileDescription = document.querySelector(".profile__subtitle");
   }
@@ -15,12 +17,19 @@ export default class UserInfo {
   }
 
   /* Изменение информации о пользователе */
-  setUserInfo({ profiletitle, profilesubtitle }) {
-    if (profiletitle) {
-      this._name.textContent = profiletitle;
+  setUserInfo(name, about, avatar) {
+    if (name) {
+      this._name.textContent = name;
     }
-    if (profilesubtitle) {
-      this._description.textContent = profilesubtitle;
+    if (about) {
+      this._description.textContent = about;
     }
+
+
+  }
+
+  setUserAvatar(avatar) {
+    console.log(avatar)
+    this._avatar.src = avatar;
   }
 }

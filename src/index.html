@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="../src/pages/index.css" rel="stylesheet"> -->
     <title>Mesto</title>
   </head>
   <body class="root">
@@ -19,11 +18,14 @@
     <main class="main">
       <!-- PROFILE -->
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/Avatar.png')%>"
-          alt="Аватар пользователя"
-        />
+        <div class="profile__avatar-container">
+          <img
+            class="profile__avatar"
+            src="<%=require('./images/Avatar.png')%>"
+            alt="Аватар пользователя"
+          />
+          <div class="profile__avatar-overlay"></div>
+        </div>
         <div class="profile__card">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -64,7 +66,7 @@
             <input
               class="popup__input popup__input_type_title"
               type="text"
-              name="profiletitle"
+              name="name"
               id="profiletitle-input"
               placeholder="Имя профиля"
               minlength="2"
@@ -77,7 +79,7 @@
             <input
               class="popup__input popup__input_type_subtitle"
               type="text"
-              name="profilesubtitle"
+              name="about"
               id="pofilesubtitle-input"
               placeholder="Описание профиля"
               minlength="2"
@@ -109,11 +111,14 @@
         />
         <div class="photo-grid__container">
           <h2 class="photo-grid__title"></h2>
-          <button
-            class="photo-grid__like-button"
-            type="button"
-            aria-label="Поставить лайк фотографии"
-          ></button>
+          <div class="photo-grid__like-container">
+            <button
+              class="photo-grid__like-button"
+              type="button"
+              aria-label="Поставить лайк фотографии"
+            ></button>
+            <p class="photo-grid__like-counter"></p>
+          </div>
         </div>
       </article>
     </template>
@@ -174,8 +179,45 @@
       </div>
     </section>
 
+    <!-- POPUP - DELETE PHOTO  -->
+    <article class="popup popup_confirm-delete">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Закрыть окно"
+        ></button>
+        <h3 class="popup__title">Вы уверены?</h3>
+          <button class="popup__submit-button popup__submit-button_confirm-delete" type="submit">Да</button>
+        </form>
+      </div>
+    </article>
 
+     <!-- POPUP - EDIT AVATAR  -->
+     <article class="popup popup_edit-avatar">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Закрыть окно"
+        ></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="editavatarform" novalidate>
+        <section class="popup__section">
+          <input
+            class="popup__input popup__input_type_avatar-url"
+            type="url"
+            name="avatar"
+            id="avatar-input"
+            placeholder="Ссылка на изображение"
+            required
+          />
+          <span class="popup__error" id="avatar-input-error"></span>
+        </section>
+          <button class="popup__submit-button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </article>
 
-    <!-- <script type="module" src="../src/pages/index.js"></script> -->
   </body>
 </html>
