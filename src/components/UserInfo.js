@@ -24,12 +24,10 @@ export default class UserInfo {
     if (about) {
       this._description.textContent = about;
     }
-
-
   }
 
   setUserAvatar(avatar) {
-    console.log(avatar)
+    console.log(avatar);
     this._avatar.src = avatar;
   }
 }
